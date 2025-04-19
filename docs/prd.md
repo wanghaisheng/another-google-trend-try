@@ -1,76 +1,70 @@
-# vibe coding starter for websim-Quick Website Starter
+好的，这是一个非常具体且有潜力的策略！利用 Backlinko 报告中识别出的那些**代表了巨大搜索量基础（“需求集中”）的顶级关键词**作为“根关键词”(Root Keywords)，然后在 Google Trends 中进行**逐级下钻**，将发现的“飙升”(Rising) 相关主题/查询作为下一级的输入，以此来探索新兴和衍生的用户需求。这种方法可以帮助你从最热门、最广泛的领域出发，逐步深入到更具体、更新兴的需求点。
 
-Build a modern, SEO-optimized website in 5 minutes.
+以下是如何实施这个策略的具体步骤和建议：
 
-Powered by **websim**, **Gemini**, and **Claude**.
+**核心思路:**
 
----
+*   **起点 (Root):** 使用 Backlinko 列表中的顶级关键词 (如 youtube, facebook, amazon, google, weather, translate 等) 作为初始输入。这些词代表了互联网上最大块的用户注意力。
+*   **引擎 (Engine):** Google Trends 的“相关主题”(Related Topics) 和“相关查询”(Related Queries) 功能，特别是其中的“**飙升**”(Rising / Breakout) 数据。
+*   **方法 (Method):** 迭代搜索。将上一级发现的“飙升”结果作为下一级的输入，进行新的搜索。
+*   **目标 (Goal):** 记录整个探索路径和所有发现的“飙升”趋势，分析潜在的新兴用户需求、兴趣点和问题。
 
-## Features
+**具体操作步骤:**
 
-- ⚡ Rapid static site setup and deployment
-- 🌍 Multi-language support (auto-generates sitemap for each language subfolder)
-- 🤖 Automated SEO:
-  - Auto-generate sitemap including all .html files
-  - SEO checks to avoid Google redirection and indexing issues
-  - Auto-submit URLs to Google (via IndexNow) and Bing
-  - SEO metadata injection
-  - Google Analytics & Microsoft Clarity integration
-  - PWA support for offline and mobile
-  - Keyword research tools (umbrella, trend, KGR, SpyFu)
-- 🖼️ AI-powered image generation (logo, cover, etc.)
-- ✍️ AI-powered blog/text generation ([auto-blog-g4f-action](https://github.com/wanghaisheng/auto-blog-g4f-action))
-- 👤 User management via [workers-users-cloudflare](https://github.com/wanghaisheng/workers-users-cloudflare/tree/main)
-- 🛠️ Modern, extensible codebase
-- 💻 PC/mobile responsive
-- 🚀 Static framework auto-deployment ([GitHub Pages Action](https://github.com/marketplace/actions/github-pages-action))
+1.  **选择根关键词 (Root Keywords):**
+    *   从 Backlinko 图片中的列表中挑选几个你认为与你的目标领域或潜在兴趣点可能相关的顶级关键词。不必全部使用，可以选择几个代表不同类别的（例如，平台类：youtube, facebook；电商类：amazon, walmart；信息类：weather, news；工具类：translate, maps）。
+    *   **注意:** 这些根关键词非常宽泛，很多是导航性搜索（用户想去那个网站）或品牌词。因此，第一层的“相关查询/主题”可能仍然很宽泛或与品牌本身高度相关。关键在于找到其中的“飙升”信号并往下钻。
 
----
+2.  **建立记录系统:**
+    *   创建一个电子表格（如 Google Sheets 或 Excel）来记录你的发现。建议包含以下列：
+        *   `层级 (Level)`: 标记是根关键词 (Level 1)，还是第几级下钻 (Level 2, Level 3...)
+        *   `父级关键词/主题 (Parent Keyword/Topic)`: 导致发现当前结果的上一级关键词/主题。
+        *   `发现的关键词/主题 (Discovered Keyword/Topic)`: Google Trends 中“相关查询”或“相关主题”的具体内容。
+        *   `类型 (Type)`: 标记是“相关查询” (Query) 还是“相关主题” (Topic)。
+        *   `状态 (Status)`: 标记是“飙升” (Rising/Breakout) 还是“热门” (Top)。**优先关注“飙升”**。
+        *   `Google Trends 链接 (Optional)`: 保存该结果的 Google Trends 页面链接，方便日后复查。
+        *   `初步分析/备注 (Initial Analysis/Notes)`: 你对这个发现的初步解读，例如它可能代表什么需求、与你的领域是否相关等。
 
-## Automated SEO Workflows
+3.  **执行迭代搜索 (Iterative Search):**
 
-This project includes GitHub Actions for search engine integration:
+    *   **Level 1:**
+        *   将你选择的第一个**根关键词**（例如 "youtube"）输入 Google Trends。
+        *   设置合适的时间范围（例如“过去 90 天”或“过去 12 个月”以捕捉较新的趋势）和地区。
+        *   查看“相关主题”和“相关查询”部分。
+        *   **记录所有标记为“飙升” (Rising/Breakout) 的结果**到你的电子表格中，标记为 Level 1。同时也可以记录一些你认为特别相关的“热门” (Top) 结果。
 
-- **Bing Webmaster:**  Automatically adds your site and submits your sitemap to Bing when you update `scripts/config.json` or `sitemap.xml`.
-- **Google Search Console:**  Automatically adds your site and submits your sitemap to Google Search Console on config or sitemap updates.
-- **IndexNow:**  Submits all URLs in your `sitemap.xml` to IndexNow on sitemap updates.
+    *   **Level 2:**
+        *   从 Level 1 记录的“飙升”结果中，**选择一个你认为有潜力或与你方向相关的**（例如，如果在搜索 "youtube" 时发现 "youtube shorts tutorial" 是飙升的相关查询）。
+        *   将这个选定的“飙升”结果（"youtube shorts tutorial"）作为**新的输入词**，在 Google Trends 中进行搜索。
+        *   查看这次搜索产生的新的“相关主题”和“相关查询”。
+        *   **记录所有新的“飙升”结果**到你的电子表格中，标记为 Level 2，并注明其“父级关键词/主题”。
 
-### Setup Required
+    *   **Level 3 及以后:**
+        *   重复 Level 2 的过程。从上一级记录的“飙升”结果中选择感兴趣的，作为新的输入词进行搜索，并记录新的“飙升”结果。
+        *   **决定何时停止：**
+            *   当结果变得过于分散、与你的目标领域不再相关时。
+            *   当 Google Trends 显示“数据不足，无法显示图表”时。
+            *   当你觉得已经挖掘到足够深或足够多的信息时（通常 3-5 层可能就足够了）。
 
-1. **Bing Webmaster API Key:**  Add your Bing Webmaster API key as a repository secret named `BING_API_KEY`.
-2. **Google Search Console Service Account:**
-   - Create a service account with access to the Search Console API.
-   - Upload the JSON credentials as a repository secret named `GOOGLE_APPLICATION_CREDENTIALS`.
+4.  **对其他根关键词重复步骤 3。**
 
----
+5.  **分析记录结果:**
+    *   **审阅电子表格:** 查看所有记录下来的“飙升”关键词和主题。
+    *   **寻找模式和主题:**
+        *   是否有某些**主题反复出现**在不同层级或不同根关键词的路径下？
+        *   哪些“飙升”趋势看起来**增长最快**（Breakout 通常比具体的百分比增长更快）？
+        *   将这些趋势与 Backlinko 的“14.1% 是问题关键词”的发现结合起来思考：这些飙升的查询/主题背后，**隐藏着用户什么样的具体问题或需求？** （例如，“AI photo editor”的飙升可能隐藏着“如何用 AI 编辑照片？”或“哪个 AI 照片编辑器最好？”的需求）。
+        *   哪些发现与你的**业务、内容创作或研究方向**高度相关？
+    *   **聚类和优先级排序:** 将相关的发现归类，并根据其**飙升程度、相关性和潜在价值**进行排序。
 
-## Getting Started
+**注意事项和技巧:**
 
-1. Clone this repo.
-2. Run your static site generator or build process.
-3. Push your changes to GitHub.
-4. The SEO workflows will trigger automatically.
+*   **理解根关键词的性质:** 顶级关键词的直接相关结果可能不那么“新颖”，需要耐心下钻几层才能发现更有趣的新兴趋势。
+*   **区分“相关查询”和“相关主题”:** “查询”是用户输入的具体词语，“主题”是 Google 理解的概念集合，两者都可能提供有价值的线索。
+*   **关注“Breakout”:** 标记为“Breakout”的通常意味着增长非常迅速，是特别值得关注的信号。
+*   **结合时间范围:** 尝试不同的时间范围（如过去 30 天 vs 过去 12 个月）可能会揭示短期热点和长期趋势。
+*   **保持目标导向:** 在下钻过程中，不断思考这些新发现是否真的与你的最终目标相关，避免漫无目的地探索。
+*   **补充验证:** 对于特别有潜力的发现，可以用更专业的关键词研究工具（如 Ahrefs, SEMrush, Google Keyword Planner）进一步查看其搜索量估计、竞争程度和相关关键词簇。
 
----
+这个方法将 Backlinko 的宏观数据洞察（需求集中在少数词）与 Google Trends 的动态趋势发现能力巧妙结合，通过系统性的迭代探索，有望帮你从看似普通的热门词汇中，挖掘出隐藏在其分支下的、真正新鲜且不断增长的用户需求。
 
-## Scripts
-
-- `scripts/bing_webmaster.py` — Bing submission logic
-- `scripts/google_search_console.py` — Google Search Console submission logic
-- `scripts/submit_indexnow.py` — IndexNow submission logic
-- `scripts/sitemap.js` — Generates sitemap based on language subfolders and .html files
-- `scripts/validate-sitemap.js` — Checks sitemap and SEO requirements
-
----
-
-## Related Resources
-
-- User management: [workers-users-cloudflare](https://github.com/wanghaisheng/workers-users-cloudflare/tree/main)
-- AI blog/text generation: [auto-blog-g4f-action](https://github.com/wanghaisheng/auto-blog-g4f-action)
-- Static deployment: [GitHub Pages Action](https://github.com/marketplace/actions/github-pages-action)
-
----
-
-## License
-
-MIT

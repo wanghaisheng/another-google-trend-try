@@ -1,0 +1,63 @@
+name: Scrape Google Trends Daily
+
+on:
+  schedule:
+    # Runs at 03:00 UTC every day (adjust as needed)
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write # Allow the workflow to push commits
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # Or your preferred Python version
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }} # Change if not using requirements.txt
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install trendspy pandas
+          # If you create a requirements.txt:
+          # pip install -r requirements.txt
+
+      - name: Create data directory
+        run: mkdir -p data # Ensure the data directory exists
+
+      - name: Run scraping script
+        run: python scripts/scrape_trendspy.py
+
+      - name: Commit and push data file
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          # Stage only the .db file inside the data directory for today
+          TODAY=$(date +'%Y-%m-%d')
+          DB_FILE="data/${TODAY}.db"
+          if [ -f "$DB_FILE" ]; then
+            git add "$DB_FILE"
+            # Check if there are changes to commit
+            if ! git diff --staged --quiet; then
+              git commit -m "Data: Update Google Trends data for ${TODAY}"
+              git push
+            else
+              echo "No changes detected in ${DB_FILE}."
+            fi
+          else
+            echo "Database file ${DB_FILE} not found. No commit."
+          fi

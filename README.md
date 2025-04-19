@@ -1,3 +1,6 @@
-WebSim Vibe Coding Starter
 
-all tools are free 
+
+
+1. https://github.com/Shaivpidadi/trends-js
+
+2. 

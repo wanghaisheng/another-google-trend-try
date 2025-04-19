@@ -1,4 +1,4 @@
-name: Scrape Google Trends Daily
+name: Scrape Google Trends Daily trendspy
 
 on:
   schedule:
